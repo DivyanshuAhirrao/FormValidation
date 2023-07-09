@@ -1,0 +1,92 @@
+body{
+    background: linear-gradient(rgba(239, 220, 243, 0.5),rgba(121, 175, 236, 0.5));
+    min-height: 100vh;
+}
+h2{
+    font-size: 45px;
+    text-align: center;
+    text-shadow: 3px 5px 5px rgb(2, 226, 2);
+}
+form{
+    box-shadow: 9px 5px 14px rgba(0, 0, 0, 0.5);
+    background-color: rgba(238, 4, 4, 0.059);
+    padding: 0 10px 0 50px;
+    border: 2px solid black;
+    border-radius: 9px;
+}
+input {
+    font-size: 20px;
+    font-weight: 50;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 35px;
+    width: 15rem; 
+    padding:0 35px;
+    border-radius: 5px;    
+    background-color: rgba(173, 247, 173, 0.5);
+    /* background: linear-gradient(rgba(241, 247, 241, 0.5),rgba(255, 255, 146, 0.5)); */
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+.box{
+    margin-top: 20px ;
+}
+.submit-btn{
+  position: relative;
+  right: 17px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 12rem;
+  padding: 1px 3.8rem;
+  letter-spacing: 1px;
+  margin: 30px 85px;
+  background: linear-gradient(rgb(233, 174, 184,0.5),rgba(197, 1, 1, 0.5));
+}
+label{
+    display: block;
+}
+.star{
+    color: red;
+}
+.optional {
+    color: rgb(70, 68, 68);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+
+/* Styling the icons  */
+form div {
+    position: relative;
+    
+}
+form div i{
+    position: absolute;
+    padding: 11px;
+}
+.success-icon, .fail-icon {
+    right: 46.9px;
+    opacity: 0;
+}
+.success-icon{
+    color: green;
+    margin-top: 15px;
+}
+
+.fail-icon, .err{
+    color: red;
+}
+.err{
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+@media screen and (max-width:440px) {
+    h2{
+        font-size: 30px;
+    }    
+}

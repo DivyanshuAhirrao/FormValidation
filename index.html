@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Form Validation </title>
+    <link rel="stylesheet" href="./form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+    <h2> ---|| Form Validation ||--- </h2>
+
+
+
+    <div class="container">
+
+    <form id="myform" action="#" method="get">
+
+       
+
+        <div  class="box">
+            <label for="name"><div class="star">*</div> Name  : </label>
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="name" id="name" />
+            <i class="fa-solid fa-circle-exclamation fail-icon"></i>
+            <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
+            <div class="error-name err" style="color: red;"> </div>
+        </div>   
+        
+        <div class="box">
+            <label for="name"> Phone : <span class="optional">(Optional)</span>  </label>
+            <i class="fa-solid fa-phone"></i>
+            <input type="number" name="cno" id="mobileno" />
+            <i class="fa-solid fa-circle-exclamation fail-icon"></i>
+            <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
+            <div class="error-cno err" style="color: red;"> </div>
+        </div>
+        <div class="box">
+            <label for="name"><div class="star">*</div>  Email : </label>
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="email" id="email" placeholder="@gmail.com" />
+            <i class="fa-solid fa-circle-exclamation fail-icon"></i>
+            <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
+            <div class="error-email err" style="color: red;"> </div>
+        </div>
+        <div class="box">
+            <label for="pass"><div class="star">*</div> Password : </label>
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="pass" id="pass" id="pass"/>
+            <i class="fa-solid fa-circle-exclamation fail-icon"></i>
+            <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
+            <div class="error-pass err" style="color: red;"> </div>
+        </div>
+        <div class="box">
+            <label for="pass"><div class="star">*</div> Confirm-Password : </label>
+            <i class="fa-sharp fa-solid fa-lock"></i>
+            <input type="password" name="cpass" id="cpass" />
+            <i class="fa-solid fa-circle-exclamation fail-icon"></i>
+            <i class="fa-sharp fa-solid fa-circle-check success-icon"></i>
+            <div class="error-cpass err" style="color: red;"> </div>
+        </div>
+        
+        <div class="box"> 
+            <input type="submit" name="submitNow" class="submit-btn" onclick="submitted()" />
+        </div>
+
+        
+        
+ 
+    
+    </form>
+    </div>
+
+
+
+
+
+
+
+    <script>
+ 
+        let id =(id)=> document.getElementById(id);
+        let classes = (classes) => document.getElementsByClassName(classes);
+        
+        const form     = id("myform")  
+              username = id("name"),
+              mobno    = id("mobileno"),
+              email    = id("email"),
+              pass     = id("pass"),
+              cpass    = id("cpass"),
+              errorMsg = classes("err"),
+              failIcon = classes("fail-icon"),
+              successIcon= classes("success-icon");
+
+              form.addEventListener("submit", (e)=>{
+                e.preventDefault();
+
+                forNullValue(username,0, "Username Cannot be Blank...");
+                forNullValue(email,2, "Email Cannot be Blank...");
+                forNullValue(pass,3, "Password Cannot be Blank...");
+
+                forUsernameCheck(username, 0, "Username should have more than 6 Character");
+
+                forPasswordCheck(pass,3,"Password should have minimum 8 character");
+
+                forPasswordConfirm(pass,cpass,4,"Password does not match !!");
+
+            
+              })
+
+
+              function submitted() {
+                confirm("Are you sure");
+              }
+
+              let forNullValue = (id,indexno,msg) => {
+                if(id.value === "") {
+                    errorMsg[indexno].innerHTML = msg
+                    failIcon[indexno].style.opacity = "1";
+                    successIcon[indexno].style.opacity ="0"
+                }
+                else{
+                    errorMsg[indexno].innerHTML = ""
+                    failIcon[indexno].style.opacity = "0";
+                    successIcon[indexno].style.opacity ="1"
+                }
+              }
+
+              let forUsernameCheck = (id,indexno,msg) => {
+                if(id.value.length <6) {
+                    errorMsg[indexno].innerHTML = msg
+                    failIcon[indexno].style.opacity = "1";
+                    successIcon[indexno].style.opacity ="0"
+                }
+                else{
+                    errorMsg[indexno].innerHTML = ""
+                    failIcon[indexno].style.opacity = "0";
+                    successIcon[indexno].style.opacity ="1"
+                }
+              }
+
+              let forPasswordCheck = (id,indexno,msg) => {
+                if(id.value.length <8) {
+                    errorMsg[indexno].innerHTML = msg
+                    failIcon[indexno].style.opacity = "1";
+                    successIcon[indexno].style.opacity ="0"
+                }
+                else{
+                    errorMsg[indexno].innerHTML = ""
+                    failIcon[indexno].style.opacity = "0";
+                    successIcon[indexno].style.opacity ="1"
+                }
+              }
+
+              let forPasswordConfirm = (id1,id2,indexno,msg) => {
+                if(id1.value != id2.value) {
+                    errorMsg[indexno].innerHTML = msg
+                    failIcon[indexno].style.opacity = "1";
+                    successIcon[indexno].style.opacity ="0"
+                }
+                else{
+                    errorMsg[indexno].innerHTML = ""
+                    failIcon[indexno].style.opacity = "0";
+                    successIcon[indexno].style.opacity ="1"
+                }
+              }
+
+              let forUser= (id1,id2,indexno,msg) => {
+                if(id1.value != id2.value) {
+                    errorMsg[indexno].innerHTML = msg
+                    failIcon[indexno].style.opacity = "1";
+                    successIcon[indexno].style.opacity ="0"
+                }
+                else{
+                    errorMsg[indexno].innerHTML = ""
+                    failIcon[indexno].style.opacity = "0";
+                    successIcon[indexno].style.opacity ="1"
+                }
+              }
+
+    
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
